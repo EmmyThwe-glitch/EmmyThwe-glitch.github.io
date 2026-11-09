@@ -1,0 +1,653 @@
+<title>Emmy Thwe Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: departures-board hero, a moving reel of real campaign creatives, then editorial sections; the boarding pass is the recurring motif. */
+:root{
+  --bg:#f5f7fb; --surface:#ffffff; --ink:#121829; --muted:#56607a; --line:#dfe4ee;
+  --red:#d3181f; --red-soft:#fde9e9; --sky:#3a9de2; --sky-soft:#e7f2fc; --sun:#f6c445;
+  --board:#121829; --board-2:#1b2440; --board-ink:#f2f4f8; --board-muted:#9aa6c2; --board-amber:#ffc24a;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Public Sans","Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --shadow:0 1px 2px rgba(18,24,41,.06),0 12px 32px -12px rgba(18,24,41,.18);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1120; --surface:#151b2f; --ink:#eef1f7; --muted:#a3adc4; --line:#283050;
+  --red:#ff4d52; --red-soft:#3a1a22; --sky:#6cb8f0; --sky-soft:#16304a; --sun:#f6c445;
+  --board:#070a14; --board-2:#121a33; --board-ink:#eef1f7; --board-muted:#9aa6c2; --board-amber:#ffc24a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -12px rgba(0,0,0,.6); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1120; --surface:#151b2f; --ink:#eef1f7; --muted:#a3adc4; --line:#283050;
+  --red:#ff4d52; --red-soft:#3a1a22; --sky:#6cb8f0; --sky-soft:#16304a; --sun:#f6c445;
+  --board:#070a14; --board-2:#121a33; --board-ink:#eef1f7; --board-muted:#9aa6c2; --board-amber:#ffc24a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px -12px rgba(0,0,0,.6); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;margin:0;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--board)}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1;text-wrap:balance;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(2.4rem,5.4vw,3.8rem);text-transform:uppercase;font-weight:800}
+h3{font-size:1.55rem;text-transform:uppercase;font-weight:800}
+p{margin:0;max-width:65ch}
+.label{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.label.red{color:var(--red)}
+a{color:var(--sky)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
+section{padding-block:clamp(64px,9vw,112px)}
+.sec-head{display:grid;gap:14px;margin-bottom:40px}
+.sec-head p{color:var(--muted);font-size:1.05rem}
+img{max-width:100%;display:block}
+.note{font-size:.85rem;color:var(--muted);margin-top:12px}
+
+/* NAV */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--board) 88%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid #26304f}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.nav .brand{font-family:var(--display);font-weight:800;font-size:1.35rem;color:var(--board-ink);text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+.nav .brand b{color:var(--red)}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a.l{color:var(--board-muted);text-decoration:none;font-size:.88rem;font-weight:600;padding:8px 10px;border-radius:999px;white-space:nowrap}
+.nav a.l:hover{color:var(--board-ink);background:#ffffff14}
+.nav a.cta{background:var(--red);color:#fff}
+@media (max-width:720px){.nav .brand{display:none}.nav .wrap{justify-content:center}}
+
+/* HERO */
+.board{background:var(--board);color:var(--board-ink);position:relative;overflow:hidden}
+.board::after{content:"";position:absolute;inset:auto -10% -40% 40%;height:80%;background:radial-gradient(closest-side,rgba(58,157,226,.28),transparent);pointer-events:none}
+.hero{padding-block:clamp(48px,7vw,88px) clamp(56px,7vw,96px);display:grid;gap:48px;grid-template-columns:1.2fr 1fr;align-items:center;position:relative;z-index:1}
+.flap{font-family:var(--mono);font-size:.78rem;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.flap span{background:var(--board-2);border:1px solid #2c3559;padding:5px 9px;border-radius:4px;color:var(--board-muted)}
+.flap .on{color:var(--board-amber);border-color:#5a4a1d}
+.hero h1{font-size:clamp(4rem,12vw,8.6rem);text-transform:uppercase;font-weight:900;line-height:.86}
+.hero h1 em{font-style:normal;color:var(--red);display:block}
+.hero-role{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.7rem);text-transform:uppercase;color:var(--board-amber);margin-top:18px;font-weight:600;letter-spacing:.03em}
+.hero-sub{font-size:1.1rem;color:#c9d0e0;margin-top:12px;max-width:52ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{font:600 .95rem var(--body);border-radius:999px;padding:12px 20px;border:1px solid transparent;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:transform .15s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn-red{background:var(--red);color:#fff}
+.btn-ghost{background:transparent;color:var(--board-ink);border-color:#3a4469}
+.hero-photo{position:relative;min-width:0;justify-self:end;width:min(100%,420px)}
+.hero-photo img{border-radius:20px;aspect-ratio:4/5;object-fit:cover;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)}
+.hero-photo .sticker{position:absolute;right:-14px;top:22px;background:var(--sun);color:#1c1606;font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:1.05rem;line-height:1;padding:10px 12px;border-radius:12px;transform:rotate(6deg);box-shadow:var(--shadow);text-align:center}
+.hero-photo .sticker b{display:block;font-size:2rem}
+.pass{display:grid;grid-template-columns:1fr auto;background:var(--surface);color:var(--ink);border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.35);position:absolute;left:-48px;bottom:-30px;width:min(340px,92%)}
+.pass .main{padding:14px 18px;display:grid;gap:8px}
+.pass .stub{padding:14px 12px;border-left:2px dashed var(--line);display:grid;place-items:center;background:var(--red-soft)}
+.route{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:2rem;font-weight:800}
+.route i{flex:1;height:2px;background:repeating-linear-gradient(90deg,var(--muted) 0 6px,transparent 6px 11px)}
+.pass-grid{display:grid;grid-template-columns:repeat(3,auto);gap:2px 16px;font-size:.8rem;color:var(--muted)}
+.pass-grid b{display:block;font-family:var(--mono);font-size:.8rem;color:var(--ink)}
+.stub b{font-family:var(--display);font-size:1.5rem;color:var(--red);writing-mode:vertical-rl;transform:rotate(180deg)}
+
+/* REEL */
+.reel{background:var(--board);padding-block:0 40px;overflow:hidden}
+.reel-label{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.reel-label .label{color:var(--board-muted)}
+.reel-label i{flex:1;height:1px;background:#2c3559}
+.track{display:flex;gap:16px;list-style:none;margin:0;padding:0;width:max-content}
+.track li{flex:none;width:clamp(170px,22vw,240px);aspect-ratio:1;border-radius:16px;overflow:hidden;box-shadow:0 14px 30px -14px rgba(0,0,0,.7);transform:rotate(var(--r,0deg))}
+.track li:nth-child(odd){--r:-1.5deg} .track li:nth-child(even){--r:1.5deg}
+.track img{width:100%;height:100%;object-fit:cover}
+@media (prefers-reduced-motion:no-preference){
+  .track{animation:scroll 55s linear infinite}
+  .reel:hover .track{animation-play-state:paused}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  .flap .on{animation:blink 1.6s steps(2) infinite}
+  @keyframes blink{50%{opacity:.45}}
+}
+@media (prefers-reduced-motion:reduce){.reel .viewport{overflow-x:auto}.track li[aria-hidden]{display:none}}
+
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat{background:var(--surface);border-radius:18px;padding:24px;display:grid;gap:8px;align-content:start;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.stat::before{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:var(--sky-soft)}
+.stat strong{font-family:var(--display);font-size:clamp(2.8rem,5vw,3.8rem);font-weight:900;color:var(--red);line-height:.9;font-variant-numeric:tabular-nums;position:relative}
+.stat span{font-size:.92rem;color:var(--muted);position:relative}
+
+/* BEFORE / AFTER */
+.compare{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:2.5/1;box-shadow:var(--shadow);background:#fff;user-select:none;--pos:50%}
+.compare img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.compare .after{clip-path:inset(0 0 0 var(--pos))}
+.compare .handle{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;background:#fff;transform:translateX(-50%);box-shadow:0 0 0 1px rgba(0,0,0,.15);pointer-events:none}
+.compare .handle::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:1.2rem;box-shadow:var(--shadow)}
+.compare .tag{position:absolute;top:14px;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 10px;border-radius:999px;pointer-events:none}
+.compare .tag.b{left:14px;background:#121829cc;color:#fff}
+.compare .tag.a{right:14px;background:var(--red);color:#fff}
+.compare input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+.compare-cap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:12px 0 40px;font-size:.88rem;color:var(--muted)}
+.compare-cap b{color:var(--ink)}
+.ba{width:100%;border-collapse:collapse;font-size:.95rem;min-width:640px}
+.ba th,.ba td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+.ba tbody tr:last-child td{border-bottom:0}
+.ba thead th{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.ba td:first-child{font-weight:700;width:20%}
+.ba td.before{color:var(--muted);width:32%}
+.ba td.after mark{background:var(--red-soft);color:var(--ink);padding:1px 5px;border-radius:4px;font-weight:600}
+.scroll{overflow-x:auto;border-radius:18px;background:var(--surface);box-shadow:var(--shadow)}
+.mix{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.mix-card{background:var(--surface);border-radius:18px;padding:20px;display:grid;gap:12px;min-width:0;box-shadow:var(--shadow)}
+.mix-card h4{margin:0;font-size:.95rem}
+.bars{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;font-size:.8rem;font-variant-numeric:tabular-nums;color:var(--muted)}
+.bars .b{height:12px;border-radius:6px;background:var(--line);min-width:3px}
+.bars .b.now{background:var(--red)}
+.mult{font-family:var(--display);font-size:2.4rem;font-weight:900;color:var(--red);line-height:1}
+
+/* CAMPAIGN WALL */
+.wall{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.tile{margin:0;border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);display:flex;flex-direction:column;min-width:0;transition:transform .2s ease,box-shadow .2s ease}
+.tile:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(18,24,41,.06),0 22px 44px -16px rgba(18,24,41,.28)}
+.tile img{width:100%;aspect-ratio:1;object-fit:cover}
+.tile.wide{grid-column:span 4} .tile.wide img{aspect-ratio:16/9;object-fit:cover;object-position:top}
+.tile.full{grid-column:1/-1} .tile.full img{aspect-ratio:1920/544;object-fit:contain;background:#f7f7f7}
+.tile.sq{grid-column:span 2}
+.tile.half{grid-column:span 3} .tile.half img{aspect-ratio:4/3}
+.tile.tall{grid-column:span 2;grid-row:span 2} .tile.tall img{aspect-ratio:auto;flex:1;min-height:0;object-fit:contain;background:#55a6de}
+.tile figcaption{padding:12px 16px 14px;font-size:.86rem;color:var(--muted)}
+.tile figcaption b{display:block;color:var(--ink);font-size:.95rem}
+
+/* CASES */
+.cases{display:grid;gap:24px}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:32px;background:var(--surface);border-radius:22px;padding:28px;align-items:center;box-shadow:var(--shadow)}
+.case-art{border-radius:16px;width:100%;aspect-ratio:1;object-fit:cover}
+.case > img:not(.case-art){border-radius:16px;width:100%}
+.case-body{display:grid;gap:14px;min-width:0}
+.kpis{display:flex;flex-wrap:wrap;gap:10px}
+.kpi{background:var(--sky-soft);border-radius:12px;padding:10px 14px;font-size:.85rem;color:var(--muted)}
+.kpi b{display:block;font-family:var(--display);font-size:1.9rem;font-weight:900;color:var(--ink);line-height:1}
+.tiers{width:100%;border-collapse:collapse;font-size:.88rem;font-variant-numeric:tabular-nums}
+.tiers th,.tiers td{padding:8px 12px;border-bottom:1px solid var(--line);text-align:left}
+.tiers th{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.case .scroll{box-shadow:none;border:1px solid var(--line);border-radius:12px}
+.diag{background:var(--board);color:var(--board-ink);border-radius:16px;padding:24px;display:grid;gap:16px;align-content:start}
+.diag .big{font-family:var(--display);font-size:clamp(3.4rem,7vw,5rem);font-weight:900;line-height:.9;color:var(--board-amber)}
+.diag p{color:#c9d0e0;font-size:.92rem}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps li{display:grid;grid-template-columns:28px 1fr;gap:10px;font-size:.88rem;color:#c9d0e0}
+.steps b{font-family:var(--mono);font-size:.75rem;color:var(--board-amber);border:1px solid #3a4469;border-radius:50%;width:24px;height:24px;display:grid;place-items:center}
+.findings{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.finding{background:var(--sky-soft);border-radius:12px;padding:12px 14px;font-size:.86rem;color:var(--muted)}
+.finding b{display:block;font-family:var(--display);font-size:1.8rem;font-weight:900;color:var(--ink);line-height:1}
+.why{display:grid;gap:8px}
+.why-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) 3ch;gap:10px;align-items:center;font-size:.86rem;color:var(--muted)}
+.why-row i{display:block;height:10px;border-radius:5px;background:var(--line);position:relative;overflow:hidden}
+.why-row i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--red);border-radius:5px}
+.why-row em{font-style:normal;font-family:var(--mono);font-size:.8rem;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+.early{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+.early .tile img{aspect-ratio:4/5;object-fit:contain;background:#0b0e18}
+
+/* BODY OF WORK */
+.years{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+.year{background:var(--surface);border-radius:18px;padding:22px;display:grid;gap:12px;align-content:start;min-width:0;box-shadow:var(--shadow);border-top:4px solid var(--red)}
+.year:nth-child(2){border-top-color:var(--sky)} .year:nth-child(3){border-top-color:var(--sun)}
+.year .tag{font-family:var(--mono);font-size:.78rem;color:var(--muted);letter-spacing:.08em}
+.year h3{font-size:1.5rem}
+.year ul{margin:0;padding-left:18px;color:var(--muted);font-size:.93rem;display:grid;gap:6px}
+.themes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.theme{display:grid;gap:10px;align-content:start;min-width:0}
+.theme h4{margin:0;font-size:1rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.85rem}
+.theme .chip{font-size:.8rem;padding:4px 10px}
+
+/* CV */
+.cols{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+.timeline{display:grid;border-left:2px solid var(--line);margin-left:6px}
+.job{position:relative;padding:0 0 30px 28px;display:grid;gap:6px}
+.job::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--red)}
+.job .when{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.job h3{font-size:1.4rem}
+.job ul{margin:4px 0 0;padding-left:18px;color:var(--muted);max-width:70ch}
+.side-block{display:grid;gap:12px;margin-bottom:32px}
+.side-block ul{margin:0;padding-left:18px;color:var(--muted)}
+
+/* CONTACT */
+.contact{background:var(--red);color:#fff;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;right:-120px;top:-120px;width:360px;height:360px;border-radius:50%;border:40px solid #ffffff14}
+.contact .wrap{display:grid;gap:24px;position:relative}
+.contact h2{color:#fff;font-size:clamp(2.6rem,6vw,4.4rem)}
+.contact-rows{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.crow{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;min-width:0}
+.crow span{font-family:var(--mono);font-size:.9rem;overflow-wrap:anywhere;user-select:all}
+.crow a{color:#fff}
+.copy{background:#fff;color:#b0121a;border:0;border-radius:999px;padding:6px 12px;font:600 .8rem var(--body);cursor:pointer;flex:none}
+footer{padding-block:24px;font-size:.82rem;color:var(--muted)}
+
+
+/* MEDIA PLAN */
+.media{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:28px;margin-top:56px;background:var(--board);color:var(--board-ink);border-radius:22px;overflow:hidden}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:minmax(220px,1.15fr) minmax(200px,1fr);gap:8px;padding:8px;min-height:520px}
+.collage figure{margin:0;position:relative;overflow:hidden;border-radius:16px;background:#0b1020}
+.collage figure:first-child{grid-column:1/-1}
+.collage img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.collage figure:hover img{transform:scale(1.04)}
+.collage figcaption{position:absolute;left:10px;bottom:10px;background:#0b1020cc;backdrop-filter:blur(6px);color:#fff;font-size:.74rem;font-weight:600;padding:5px 10px;border-radius:999px;letter-spacing:.02em}
+.media-body{padding:32px 32px 32px 4px;display:grid;gap:18px;align-content:start}
+.media-body h3{color:#fff}
+.media-body p{color:#c9d0e0}
+.media-body .label{color:var(--board-amber)}
+.tiers-ooh{display:grid;gap:10px}
+.tier-row{display:grid;grid-template-columns:72px 1fr;gap:12px;align-items:start;font-size:.9rem;color:#c9d0e0}
+.tier-row b{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--board-ink);background:var(--board-2);border:1px solid #2c3559;border-radius:6px;padding:4px 6px;text-align:center}
+.merch{display:flex;flex-wrap:wrap;gap:6px}
+.merch span{background:#ffffff14;border:1px solid #ffffff26;border-radius:999px;padding:4px 10px;font-size:.8rem;color:var(--board-ink)}
+/* CONTENT ENGINE */
+.engine-wrap{overflow-x:auto;border-radius:18px;box-shadow:var(--shadow);background:var(--surface)}
+.engine{display:grid;grid-template-columns:120px repeat(7,minmax(118px,1fr));min-width:980px;font-size:.82rem}
+.engine > div{padding:12px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.engine .hd{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);background:var(--bg)}
+.engine .ch{font-weight:700;background:var(--bg)}
+.engine .c b{display:block;color:var(--ink);font-size:.85rem;margin-bottom:2px}
+.engine .c{color:var(--muted)}
+.engine .c.fb{box-shadow:inset 3px 0 0 var(--sky)}
+.engine .c.tt{box-shadow:inset 3px 0 0 var(--red)}
+.chan{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.chan span{background:var(--surface);box-shadow:var(--shadow);border-radius:999px;padding:6px 12px;font-size:.85rem;font-weight:600}
+.chan span i{font-style:normal;color:var(--muted);font-weight:400}
+.month{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:28px;margin-top:32px;background:var(--surface);border-radius:18px;padding:24px;box-shadow:var(--shadow);align-items:center}
+.month-big b{display:block;font-family:var(--display);font-size:clamp(3.6rem,8vw,5.4rem);font-weight:900;color:var(--red);line-height:.9}
+.month-big span{color:var(--muted);font-size:.95rem}
+.month-bars{display:grid;gap:7px}
+.mb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr) 3ch;gap:10px;align-items:center;font-size:.86rem;color:var(--muted)}
+.mb i{display:block;height:10px;border-radius:5px;background:var(--line);position:relative;overflow:hidden}
+.mb i::after{content:"";position:absolute;inset:0 auto 0 0;width:var(--w);background:var(--sky);border-radius:5px}
+.mb em{font-style:normal;font-family:var(--mono);font-size:.8rem;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:720px){.month{grid-template-columns:1fr}}
+/* RUNNER PACKAGES */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rung{border-radius:12px;padding:10px 12px;background:var(--sky-soft);font-size:.8rem;color:var(--muted)}
+.rung b{display:block;font-family:var(--display);font-size:1.7rem;font-weight:900;color:var(--ink);line-height:1}
+.rung:nth-child(4){background:var(--red);color:#ffe3e3} .rung:nth-child(4) b{color:#fff}
+.events{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.event{border:1px solid var(--line);border-radius:12px;padding:12px;font-size:.84rem;color:var(--muted);display:grid;gap:4px}
+.event b{color:var(--ink);font-size:.92rem}
+.event em{font-style:normal;font-family:var(--mono);font-size:.72rem;color:var(--red)}
+@media (max-width:960px){.media{grid-template-columns:1fr}.media-body{padding:0 22px 26px}.collage{min-height:0;grid-template-rows:240px 200px}.ladder{grid-template-columns:repeat(2,1fr)}.events{grid-template-columns:1fr}}
+@media (max-width:960px){
+  .hero,.case,.cols{grid-template-columns:1fr}
+  .hero-photo{justify-self:center;margin-bottom:24px}
+  .pass{left:50%;transform:translateX(-50%);bottom:-34px}
+  .stats,.mix{grid-template-columns:repeat(2,1fr)}
+  .wall{grid-template-columns:repeat(2,1fr)}
+  .tile.wide,.tile.half,.tile.full{grid-column:span 2} .tile.sq{grid-column:span 1} .tile.tall{grid-column:span 1;grid-row:span 2}
+  .years,.themes,.early{grid-template-columns:1fr}
+  .compare{aspect-ratio:16/9}
+}
+@media (max-width:520px){.stats,.mix{grid-template-columns:1fr} .wall{grid-template-columns:1fr} .tile.sq,.tile.tall{grid-column:span 1} .tile.tall{grid-row:auto} .tile.tall img{aspect-ratio:1/2;flex:none} .findings{grid-template-columns:1fr} .why-row{grid-template-columns:1fr 3ch}.why-row i{grid-column:1/-1;grid-row:2}}
+</style>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="brand" href="#top">Emmy <b>Thwe</b></a>
+    <ul>
+      <li><a class="l" href="#work">Results</a></li>
+      <li><a class="l" href="#brand">Brand</a></li>
+      <li><a class="l" href="#content">Content</a></li>
+      <li><a class="l" href="#cases">Case studies</a></li>
+      <li><a class="l" href="#body-of-work">Body of work</a></li>
+      <li><a class="l" href="#cv">CV</a></li>
+      <li><a class="l cta" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="board" id="top">
+  <div class="wrap hero">
+    <div>
+      <div class="flap" aria-label="Status"><span>RGN → JKT</span><span>8+ YRS</span><span>OTA · MARKETPLACES</span><span class="on">OPEN TO REMOTE</span></div>
+      <h1>Emmy<em>Thwe</em></h1>
+      <p class="hero-role">Growth &amp; marketplace marketing leader</p>
+      <p class="hero-sub">As Head of Marketing at Flymya, Myanmar’s leading online travel agency, I turned a domestic-flights brand into a full travel platform, and tripled international bookings in two years.</p>
+      <div class="hero-cta">
+        <a class="btn btn-red" href="#work">See the results</a>
+        <a class="btn btn-ghost" href="#cv">Read the CV</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="img/emmy.jpg" alt="Emmy Thwe">
+      <div class="sticker" aria-hidden="true"><b>3.6×</b>intl. bookings</div>
+      <div class="pass" aria-label="Availability">
+        <div class="main">
+          <div class="label">Boarding pass · Ei Myat Myat Thwe</div>
+          <div class="route">JKT <i></i> ANY</div>
+          <div class="pass-grid"><div>Base<b>Jakarta</b></div><div>Zone<b>UTC+7</b></div><div>Sydney<b>−3/4 h</b></div></div>
+        </div>
+        <div class="stub"><b>REMOTE</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="reel" aria-label="Flymya campaign creatives">
+  <div class="wrap reel-label"><span class="label">Now showing · Flymya campaigns 2024 – 2026</span><i></i></div>
+  <div class="viewport"><ul class="track"><li><img src="img/post-budget.jpg" alt="Budget travel campaign" loading="lazy"></li><li><img src="img/post-trailrun.jpg" alt="Taunggyi Trail Run sponsorship" loading="lazy"></li><li><img src="img/post-loyalty-coupon.jpg" alt="Loyalty Coupon launch" loading="lazy"></li><li><img src="img/post-hotel-longstay.jpg" alt="Hotel Long Stay launch" loading="lazy"></li><li><img src="img/post-kbzpay.jpg" alt="KBZPay mini app launch" loading="lazy"></li><li><img src="img/billboard.jpg" alt="Flymya billboard in Yangon" loading="lazy"></li><li><img src="img/airport.jpg" alt="Flymya airport advertising" loading="lazy"></li><li><img src="img/tiktok.jpg" alt="Flymya TikTok channel" loading="lazy"></li><li aria-hidden="true"><img src="img/post-budget.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/post-trailrun.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/post-loyalty-coupon.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/post-hotel-longstay.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/post-kbzpay.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/billboard.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/airport.jpg" alt="" loading="lazy"></li><li aria-hidden="true"><img src="img/tiktok.jpg" alt="" loading="lazy"></li></ul></div>
+</div>
+
+<main>
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="label red">Flymya · Jan 2024 – present</span><h2>Results at a glance</h2></div>
+    <div class="stats">
+      <div class="stat"><strong>3.6×</strong><span>monthly international flight bookings (2,649 → 9,638)</span></div>
+      <div class="stat"><strong>85M</strong><span>Facebook reach, up from 5M in two years</span></div>
+      <div class="stat"><strong>21,404</strong><span>new first-purchase customers in 2024 (+20% YoY)</span></div>
+      <div class="stat"><strong>3 → 13</strong><span>marketing team built and led</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label red">Before I joined vs. today</span>
+      <h2>How Flymya changed</h2>
+      <p>When I joined in January 2024, Flymya was known for domestic flight tickets and a flat, illustrated look. Drag the slider to see the brand relaunch.</p>
+    </div>
+    <div class="compare" id="compare">
+      <img src="img/fb-cover-2022.jpg" alt="Flymya Facebook cover from October 2022: flat illustration with the tagline Travel is easy with us">
+      <img class="after" src="img/fb-cover-2024.jpg" alt="Flymya Facebook cover from May 2024: real travelers holding the Flymya app">
+      <span class="tag b">2022</span><span class="tag a">2024 relaunch</span>
+      <span class="handle" aria-hidden="true"></span>
+      <input type="range" id="compare-range" min="0" max="100" value="50" aria-label="Compare the 2022 and 2024 Facebook covers">
+    </div>
+    <div class="compare-cap"><span><b>Before:</b> flat illustration, tagline only, no product or people</span><span><b>After:</b> real travelers, the app front and center, every service on show</span></div>
+    <div class="scroll">
+      <table class="ba">
+        <thead><tr><th>Area</th><th>Before (2023)</th><th>Today (2026)</th></tr></thead>
+        <tbody>
+          <tr><td>Positioning</td><td class="before">Domestic flight booking site</td><td class="after">Full travel platform: <mark>international flights</mark>, domestic and international hotels, long stays, buses, insurance, visas, airport CIP, tours, cars and balloons</td></tr>
+          <tr><td>Website</td><td class="before">Known mainly for domestic flight search</td><td class="after">Nine product tabs, an <mark>international airlines wall</mark> (20+ carriers), route-by-route promo codes, hotel cross-sell with loyalty points, and booking inside KBZPay, AYA Pay, CTZPay, WavePay and UAB Pay</td></tr>
+          <tr><td>Market share</td><td class="before">Domestic 4.5% · International 1.1%</td><td class="after">Domestic <mark>5.0%</mark> · International <mark>3.3%</mark></td></tr>
+          <tr><td>Facebook</td><td class="before">5M reach</td><td class="after"><mark>85M reach</mark>, 80K+ new followers, 496K page followers (Oct 2026)</td></tr>
+          <tr><td>TikTok</td><td class="before">No channel</td><td class="after">Launched; <mark>16K followers</mark> in the first year</td></tr>
+          <tr><td>Loyalty</td><td class="before">No program</td><td class="after"><mark>Four-tier loyalty program</mark> launched July 2024, with points, coupons and leaderboards</td></tr>
+          <tr><td>Offline presence</td><td class="before">One sales outlet; no outdoor advertising</td><td class="after">3 new retail counters, <mark>24 shopping malls</mark>, airport terminals in Yangon, Mandalay and Heho, and city billboards</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <p class="note">Figures come from Flymya’s internal reporting.</p>
+    <div class="mix" aria-label="Monthly bookings, January 2024 versus January 2026">
+      <div class="mix-card"><h4>International flights</h4><div class="mult">3.6×</div>
+        <div class="bars"><span>2024</span><div class="b" style="width:27%"></div><span>2026</span><div class="b now" style="width:100%"></div></div><span class="label">2,649 → 9,638</span></div>
+      <div class="mix-card"><h4>International hotels</h4><div class="mult">8.2×</div>
+        <div class="bars"><span>2024</span><div class="b" style="width:12%"></div><span>2026</span><div class="b now" style="width:100%"></div></div><span class="label">37 → 302</span></div>
+      <div class="mix-card"><h4>Travel insurance</h4><div class="mult">11.6×</div>
+        <div class="bars"><span>2024</span><div class="b" style="width:9%"></div><span>2026</span><div class="b now" style="width:100%"></div></div><span class="label">5 → 58</span></div>
+      <div class="mix-card"><h4>Car rentals</h4><div class="mult">4.8×</div>
+        <div class="bars"><span>2024</span><div class="b" style="width:21%"></div><span>2026</span><div class="b now" style="width:100%"></div></div><span class="label">15 → 72</span></div>
+    </div>
+    
+    <p class="note">Monthly bookings, January 2024 vs. January 2026. Each card uses its own scale.</p>
+  </div>
+</section>
+
+<section id="brand">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label red">Brand theme</span>
+      <h2>The brand, everywhere</h2>
+      <p>One sky-blue, yellow and white system, Burmese-first and people-led, used across the website, app, social, outdoor and airports.</p>
+    </div>
+    <div class="wall">
+      <figure class="tile wide"><img src="img/flymya-home-2026.jpg" alt="Flymya homepage in 2026 with nine product tabs and promotion banners"><figcaption><b>Website, 2026</b>Nine product tabs and localized promo banners</figcaption></figure>
+      <figure class="tile tall"><img src="img/post-flights.jpg" alt="Flymya flight fare campaign post with a smiling traveler"><figcaption><b>Flight fare campaign</b>People-led social creative</figcaption></figure>
+      <figure class="tile sq"><img src="img/post-budget.jpg" alt="Flymya budget travel campaign post"><figcaption><b>Budget travel</b>Booking in the app, on any budget</figcaption></figure>
+      <figure class="tile sq"><img src="img/post-hotel-longstay.jpg" alt="Flymya Hotel Long Stay launch post"><figcaption><b>Hotel Long Stay</b>New product launch</figcaption></figure>
+      <figure class="tile full"><img src="img/flymya-airlines-2026.jpg" alt="Flymya website showing international airline partners"><figcaption><b>International expansion</b>The airline wall now leads with 20+ international carriers</figcaption></figure>
+      <figure class="tile half"><img src="img/facebook-2026.jpg" alt="Flymya Facebook page in October 2026 with the Loyalty Program cover and 496K followers" style="object-position:left top"><figcaption><b>Facebook, Oct 2026</b>496K followers; reach up from 5M to 85M</figcaption></figure>
+      <figure class="tile half"><img src="img/tiktok.jpg" alt="Flymya TikTok profile" style="object-position:center 30%"><figcaption><b>TikTok</b>Launched from zero to 16K followers</figcaption></figure>
+    </div>
+    <div class="media">
+      <div class="collage">
+        <figure><img src="img/billboard.jpg" alt="Flymya billboard in Yangon"><figcaption>City billboards · Yangon</figcaption></figure>
+        <figure><img src="img/airport.jpg" alt="Flymya advertising inside an airport terminal"><figcaption>Airport terminals</figcaption></figure>
+        <figure><img src="img/ooh-escalator.jpg" style="object-position:50% 40%" alt="Flymya escalator wraps at Junction City, Yangon"><figcaption>Junction City escalators</figcaption></figure>
+      </div>
+      <div class="media-body">
+        <span class="label">Out-of-home & on-ground · 2026 – 2027</span>
+        <h3>A tiered OOH network</h3>
+        <p>I planned outdoor media by footfall and booking intent, then rolled it out across airports, malls and digital screens in Yangon, Mandalay and Taunggyi.</p>
+        <div class="tiers-ooh">
+          <div class="tier-row"><b>TIER 1</b><span>Yangon and Mandalay international airports (plus Heho), Myanmar Plaza, Junction City escalators</span></div>
+          <div class="tier-row"><b>TIER 2</b><span>Hledan Centre, Junction Square escalators, Mandalay’s largest billboard on 73rd Street</span></div>
+          <div class="tier-row"><b>DIGITAL</b><span>LED and digital screens at Junction Square, Terminal M, Mingalar Mandalay and The Central</span></div>
+          <div class="tier-row"><b>RETAIL</b><span>Times City light box, Makro trolleys, KBZPay centers and a new Taunggyi retail counter</span></div>
+        </div>
+        <span class="label">Merchandise as booking rewards</span>
+        <div class="merch"><span>Tote bag</span><span>Mug</span><span>Travel pouch</span><span>Luggage tag + passport cover</span><span>Notebook &amp; pen</span><span>2027 calendar</span><span>Mascot character</span><span>Platinum New Year gift</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label red">Always-on content · 2026 – 2027</span>
+      <h2>A content engine, seven days a week</h2>
+      <p>I set content pillars by day and by channel, so every post has a job: educate, build trust, sell, or reward loyalty. The team runs it from one shared calendar.</p>
+    </div>
+    <div class="engine-wrap"><div class="engine" role="table" aria-label="Weekly content pillars by channel">
+      <div class="hd" role="columnheader">Channel</div><div class="hd">Mon</div><div class="hd">Tue</div><div class="hd">Wed</div><div class="hd">Thu</div><div class="hd">Fri</div><div class="hd">Sat</div><div class="hd">Sun</div>
+      <div class="ch">Facebook</div>
+      <div class="c fb"><b>How-to</b>Booking guides and travel tips</div>
+      <div class="c fb"><b>Why Flymya</b>Customer stories and trust</div>
+      <div class="c fb"><b>Where to Fly</b>Top routes and flight deals</div>
+      <div class="c fb"><b>Loyalty</b>Program perks and tiers</div>
+      <div class="c fb"><b>Hotels &amp; more</b>Hotel and product deals</div>
+      <div class="c fb"><b>Travel 101</b>Beginner travel basics</div>
+      <div class="c fb"><b>Route spotlight</b>One route, one price</div>
+      <div class="ch">TikTok</div>
+      <div class="c tt"><b>Travel Hack</b>How to book</div>
+      <div class="c tt"><b>Truth or Myth</b>Busting travel beliefs</div>
+      <div class="c tt"><b>Where To Go</b>Destination inspiration</div>
+      <div class="c tt"><b>Need to Know</b>Practical travel advice</div>
+      <div class="c tt"><b>Flymya Insider</b>What we actually do</div>
+      <div class="c tt"><b>Relatable</b>Funny, shareable travel</div>
+      <div class="c tt"><b>Deal Drop</b>Soft-sell promotions</div>
+      <div class="ch">Push</div>
+      <div class="c"><b>AM:</b> tip + benefit<br><b>PM:</b> domestic hotels</div>
+      <div class="c"><b>AM:</b> route + price<br><b>PM:</b> hotel long stay</div>
+      <div class="c"><b>AM:</b> popularity + urgency<br><b>PM:</b> travel insurance</div>
+      <div class="c"><b>AM:</b> tip + benefit<br><b>PM:</b> visa service</div>
+      <div class="c"><b>AM:</b> popularity + urgency<br><b>PM:</b> bus</div>
+      <div class="c"><b>AM:</b> route + price<br><b>PM:</b> intl. hotels</div>
+      <div class="c"><b>AM:</b> tip + benefit<br><b>PM:</b> CIP lounge</div>
+    </div></div>
+    <div class="chan"><span>Facebook</span><span>TikTok</span><span>Instagram <i>· carousels &amp; reels</i></span><span>LinkedIn <i>· growth story, team</i></span><span>Viber</span><span>Telegram</span><span>KBZPay OA</span><span>Email</span><span>Push</span><span>Experience Myanmar <i>· destination channel</i></span></div>
+    <div class="month">
+      <div class="month-big"><b>~240</b><span>pieces of content scheduled on one month of the calendar (October 2026)</span></div>
+      <div class="month-bars" aria-label="Scheduled pieces by channel, October 2026 calendar view">
+        <div class="mb"><span>Facebook</span><i style="--w:100%"></i><em>86</em></div>
+        <div class="mb"><span>KBZPay official account</span><i style="--w:42%"></i><em>36</em></div>
+        <div class="mb"><span>Push notifications</span><i style="--w:41%"></i><em>35</em></div>
+        <div class="mb"><span>Viber &amp; Telegram</span><i style="--w:29%"></i><em>25</em></div>
+        <div class="mb"><span>Instagram</span><i style="--w:17%"></i><em>15</em></div>
+        <div class="mb"><span>Experience Myanmar</span><i style="--w:17%"></i><em>15</em></div>
+        <div class="mb"><span>LinkedIn</span><i style="--w:16%"></i><em>14</em></div>
+        <div class="mb"><span>Campaigns</span><i style="--w:8%"></i><em>7</em></div>
+        <div class="mb"><span>SEO articles &amp; media</span><i style="--w:9%"></i><em>8</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases" style="background:var(--surface)">
+  <div class="wrap">
+    <div class="sec-head"><span class="label red">Case studies</span><h2>Selected campaigns</h2></div>
+    <div class="cases">
+      <article class="case">
+        <img class="case-art" src="img/post-kbzpay.jpg" alt="Flymya social post launching the Flymya mini app inside KBZPay">
+        <div class="case-body">
+          <span class="label">Partnership · Acquisition</span>
+          <h3>Flymya inside KBZPay</h3>
+          <p>I launched Flymya as a mini app inside KBZPay, a wallet with 19M users, so people could book travel where they already pay. Influencer stories on Facebook and TikTok showed how fast a last-minute trip could be booked in the app.</p>
+          <div class="kpis"><div class="kpi"><b>9.8M</b>reach</div><div class="kpi"><b>625K</b>engagements</div><div class="kpi"><b>+22%</b>bookings</div><div class="kpi"><b>+15%</b>session time</div></div>
+        </div>
+      </article>
+      <article class="case">
+        <img class="case-art" src="img/post-loyalty-coupon.jpg" alt="Flymya Loyalty Coupon social post">
+        <div class="case-body">
+          <span class="label">Retention · Launched 20 July 2024</span>
+          <h3>Flymya Loyalty Program</h3>
+          <p>A tiered rewards program to drive repeat bookings. Members earn points on bookings, referrals and milestones, and the tiers let us segment high-value customers for personalized campaigns.</p>
+          <div class="scroll"><table class="tiers">
+            <thead><tr><th>Tier</th><th>Qualifies at</th><th>Earn rate</th></tr></thead>
+            <tbody>
+              <tr><td>Bronze</td><td>Verified customer</td><td>1 pt / 10,000 MMK</td></tr>
+              <tr><td>Silver</td><td>200,000 MMK spent</td><td>1 pt / 9,000 MMK</td></tr>
+              <tr><td>Gold</td><td>700,000 MMK spent</td><td>1 pt / 7,000 MMK</td></tr>
+              <tr><td>Platinum</td><td>2,000,000 MMK spent</td><td>1 pt / 5,000 MMK</td></tr>
+            </tbody></table></div>
+        </div>
+      </article>
+      <article class="case">
+        <div class="diag" aria-label="Campaign approach">
+          <span class="label" style="color:#8f9bb8">Lapsed Platinum members, July 2026</span>
+          <div class="big">3,629</div>
+          <p>Platinum members active in 2024 and 2025 had not booked in 2026, about 35% of the tier.</p>
+          <ol class="steps">
+            <li><b>1</b>Win-back offer: 25,000 MMK off any flight, one use per member, capped at 500 redemptions</li>
+            <li><b>2</b>Behavior analysis: app sessions, last search, last route and where each member dropped out of the funnel</li>
+            <li><b>3</b>A call list of 837 members, split across four segments: lapsed international flyers, members who dropped out mid-booking, members still opening the app, and fully inactive members</li>
+            <li><b>4</b>Product and channel fixes from what we heard</li>
+          </ol>
+        </div>
+        <div class="case-body">
+          <span class="label">Retention · Reactivation · July 2026 – ongoing</span>
+          <h3>Platinum Member Reactivation</h3>
+          <p>Instead of only sending a discount, I set the team one question: of the members who stopped booking, how many still traveled but chose another platform because of route or price? We paired the email, web and app offer with session and route data, then had the reservations team call hundreds of members directly.</p>
+          <div class="findings">
+            <div class="finding"><b>837</b>lapsed members on the call list, across four behavior segments</div>
+            <div class="finding"><b>~385</b>calls logged so far, with ~225 conversations completed</div>
+          </div>
+          <div class="why" aria-label="Why reached members had not booked">
+            <span class="label">Why they hadn’t booked · share of members reached</span>
+            <div class="why-row"><span>No trip planned this year</span><i style="--w:60%"></i><em>60%</em></div>
+            <div class="why-row"><span>Booking elsewhere by habit, payment method or points</span><i style="--w:13%"></i><em>13%</em></div>
+            <div class="why-row"><span>Still booking with Flymya via family or another account</span><i style="--w:9%"></i><em>9%</em></div>
+            <div class="why-row"><span>Found a lower price elsewhere</span><i style="--w:5%"></i><em>5%</em></div>
+            <div class="why-row"><span>Service experience</span><i style="--w:4%"></i><em>4%</em></div>
+            <div class="why-row"><span>Route had no seats (e.g. Myitkyina)</span><i style="--w:4%"></i><em>4%</em></div>
+            <div class="why-row"><span>Upcoming trip, passed to reservations</span><i style="--w:3%"></i><em>3%</em></div>
+            <div class="why-row"><span>Website or app issue</span><i style="--w:2%"></i><em>2%</em></div>
+            <span class="note" style="margin-top:4px">Grouped from the team’s call notes; shares are approximate.</span>
+          </div>
+          <p>Only about 1 in 20 left over price. The bigger levers were timing and convenience: members used other apps for points, card or foreign-currency payment, or because someone else booked for them. The fixes: show each member their Platinum tier at sign-in, apply member promo codes automatically at checkout, promote card payment and the loyalty program in follow-ups, and keep a reservations agent calling lapsed members 1.5 days a week.</p>
+        </div>
+      </article>
+      <article class="case">
+        <img class="case-art" src="img/post-trailrun.jpg" alt="Flymya social post for the Taunggyi Trail Run">
+        <div class="case-body">
+          <span class="label">Sponsorship · Partnerships · 2026 – 2027</span>
+          <h3>Trail running sponsorships</h3>
+          <p>I turned event sponsorship into a sales channel. Flymya became Silver Sponsor of three trail races and sold the trip around the run, not just a logo on a banner: flights, hotels, transfers and packages, each with an exclusive runner offer.</p>
+          <div class="events">
+            <div class="event"><em>Aug – Oct 2026</em><b>Pyin Oo Lwin Jungle Trail</b>Runner deals on flights, hotels and bus + hotel packages</div>
+            <div class="event"><em>25 Oct 2026</em><b>Taunggyi Trail Run Ultra</b>Five runner offers, up to 50,000 MMK off flight + hotel, plus a race-village booth</div>
+            <div class="event"><em>13 – 14 Feb 2027</em><b>Kalaw Trail Run</b>Co-branded booking page for international runners</div>
+          </div>
+          <p>At the Taunggyi race village we gave merchandise for bookings (a tote bag for flights, a mug for hotels) and a 20,000 MMK voucher for every new sign-up. For Kalaw, we built a single landing page on the organizer’s registration site covering flights into Myanmar, tourist visas, e-SIMs, transfers, blocked hotel rooms and onward trips to Inle and Bagan.</p>
+          <span class="label">Proposed: a group discount that grows with every runner who books</span>
+          <div class="ladder"><div class="rung"><b>3%</b>1–99 bookings</div><div class="rung"><b>5%</b>100–249</div><div class="rung"><b>7%</b>250–499</div><div class="rung"><b>10%</b>500+ bookings</div></div>
+          <p class="note" style="margin-top:0">Early bookers get the difference back as Flymya credit plus 500 loyalty points when a higher tier unlocks, so every runner has a reason to share.</p>
+        </div>
+      </article>
+    </div>
+    
+    <div class="sec-head" style="margin:64px 0 0"><span class="label red">Earlier career · influencer marketing</span></div>
+    <div class="early">
+      <figure class="tile"><img src="img/kfc.jpg" alt="KFC Myanmar Facebook page"><figcaption><b>KFC Myanmar</b>8 campaigns over 18 months; the Mandala campaign reached 1.4M with 543K engagements at $0.007 per engagement</figcaption></figure>
+      <figure class="tile"><img src="img/genxt.jpg" alt="GenXT Facebook page"><figcaption><b>GenXT iPhone X launch</b>7 creators, 21 posts and live launch-event coverage; 5.1M reach</figcaption></figure>
+      <figure class="tile"><img src="img/phs.jpg" alt="Pun Hlaing Hospitals Facebook page"><figcaption><b>Pun Hlaing Siloam Hospitals</b>Healthcare education through 2 creators; 662K reach, 6.3K shares</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="body-of-work">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="label red">Flymya marketing board · 2024 – 2027</span>
+      <h2>Body of work</h2>
+      <p>Highlights from three years of projects my team and I ran at Flymya, from launches and partnerships to retail openings and product work.</p>
+    </div>
+    <div class="years">
+      <div class="year"><span class="tag">2024 – 2025</span><h3>Build the engine</h3>
+        <ul><li>Launched the Flymya Loyalty Program (July 2024)</li><li>Grab partnership, plus referral trials with uab Bank and Ninja Van kiosks</li><li>Branded 100 tuk-tuks in Mandalay and planned the 2024–25 roadshows</li><li>Rebuilt the social content calendar and Experience Myanmar channel</li><li>Insurance partnership with XtraSure; Facebook page verification</li></ul></div>
+      <div class="year"><span class="tag">2025 – 2026</span><h3>Scale partnerships</h3>
+        <ul><li>Flymya mini app inside KBZPay with a unified payment flow</li><li>Referral programs with AYA Pay, CTZPay, Wave care centers and hotel partners</li><li>Opened the Junction City retail shop; expanded the outdoor ad network</li><li>Programmatic ads, KOL campaigns and the "Where Will You Fly Next?" challenge</li><li>International market partnerships; started the marketing internship program</li></ul></div>
+      <div class="year"><span class="tag">2026 – 2027</span><h3>Deepen loyalty and product</h3>
+        <ul><li>Launched the new flight booking flow and app relaunch</li><li>Tourism Malaysia × Flymya campaign; International Flights recovery plan</li><li>Flymya Circle, City Rewards and student benefit programs</li><li>Platinum member reactivation and lifecycle email and SMS</li><li>Taunggyi retail opening; trail run sponsorship and pop-ups</li></ul></div>
+    </div>
+    <div class="themes">
+      <div class="theme"><h4>Retention &amp; lifecycle</h4><div class="chips"><span class="chip">Unpopular-route promotions</span><span class="chip">Festival campaigns</span><span class="chip">Loyalty program + upgrade</span><span class="chip">Platinum reactivation</span><span class="chip">Sign-up activation</span><span class="chip">Email &amp; SMS</span><span class="chip">Push notifications</span><span class="chip">Weekly countdown deals</span></div></div>
+      <div class="theme"><h4>Partnerships &amp; wallets</h4><div class="chips"><span class="chip">KBZPay mini app</span><span class="chip">AYA Pay</span><span class="chip">CTZPay</span><span class="chip">Wave</span><span class="chip">uab Bank</span><span class="chip">Grab</span><span class="chip">Ninja Van</span><span class="chip">XtraSure</span><span class="chip">Tourism Malaysia</span><span class="chip">Hotel referrals</span></div></div>
+      <div class="theme"><h4>Brand &amp; offline</h4><div class="chips"><span class="chip">OOH network</span><span class="chip">Mandalay tuk-tuks</span><span class="chip">Roadshows &amp; pop-ups</span><span class="chip">Retail shops</span><span class="chip">Trail run sponsorship</span><span class="chip">Merchandise rewards</span><span class="chip">3 trail-race sponsorships</span></div></div>
+      <div class="theme"><h4>Content &amp; social</h4><div class="chips"><span class="chip">Daily content pillars</span><span class="chip">TikTok channel</span><span class="chip">Content calendars</span><span class="chip">KOL &amp; barter campaigns</span><span class="chip">SEO brand articles</span><span class="chip">Travel articles</span><span class="chip">Social benchmarks</span></div></div>
+      <div class="theme"><h4>Product &amp; data</h4><div class="chips"><span class="chip">New booking flow</span><span class="chip">App performance analysis</span><span class="chip">AI booking chat</span><span class="chip">Partner pricing &amp; promo tools</span><span class="chip">Funnels &amp; dashboards</span><span class="chip">Programmatic ads</span></div></div>
+      <div class="theme"><h4>Team</h4><div class="chips"><span class="chip">Team of 3 → 13</span><span class="chip">OKRs</span><span class="chip">Training plan</span><span class="chip">Internship program</span><span class="chip">Weekly campaign reviews</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cv" style="background:var(--surface)">
+  <div class="wrap cols">
+    <div>
+      <div class="sec-head"><span class="label red">Curriculum vitae</span><h2>Experience</h2></div>
+      <div class="timeline">
+        <div class="job"><span class="when">Jan 2024 – Present · Yangon</span><h3>Head of Marketing, Flymya</h3>
+          <ul><li>Own B2C growth for an online travel marketplace: acquisition, retention, loyalty, pricing and service fees</li><li>Lead paid, social, CRM, influencer, partner, outdoor, retail and in-app campaigns</li><li>Work with Product, Tech and Data on booking-flow changes and the 2026 app relaunch; track CAC, LTV and retention in SQL and Looker Studio</li></ul></div>
+        <div class="job"><span class="when">Jan 2021 – Dec 2023 · Yangon</span><h3>Account Director, NorthernX (Duwun)</h3>
+          <ul><li>Led a 10-person account and business development team for an 8M-follower lifestyle media platform; client NPS 43</li><li>Campaigns for UNFPA (12M reach), KBZ Bank (8M), KBZPay (6.69M) and Ford (5.4M)</li></ul></div>
+        <div class="job"><span class="when">Jun 2020 – Jan 2021</span><h3>Senior Account Manager, Flow Marketing</h3>
+          <ul><li>Integrated strategies for GenXT, MKW and Vyasa Yoga (Singapore)</li></ul></div>
+        <div class="job"><span class="when">Nov 2019 – Mar 2020</span><h3>Business Development Manager, Hello Sayarwon</h3>
+          <ul><li>Market insight and strategy for Pacific Andaman, CMHL and AIA Myanmar</li></ul></div>
+        <div class="job"><span class="when">Oct 2017 – Oct 2019</span><h3>Business Development Manager, Piyawasa</h3>
+          <ul><li>Built an influencer network of 800+ creators; campaigns for Unilever, Telenor and KFC</li></ul></div>
+      </div>
+    </div>
+    <aside>
+      <div class="side-block"><span class="label">Skills</span>
+        <div class="chips"><span class="chip">Marketplace growth</span><span class="chip">Lifecycle &amp; CRM</span><span class="chip">Loyalty &amp; referral</span><span class="chip">Performance marketing</span><span class="chip">Partnerships</span><span class="chip">Influencer marketing</span><span class="chip">Product marketing</span><span class="chip">Pricing &amp; monetization</span><span class="chip">CAC / LTV</span><span class="chip">SQL</span><span class="chip">Looker Studio</span><span class="chip">OKRs</span></div></div>
+      <div class="side-block"><span class="label">Education</span>
+        <ul><li>MSc Marketing, University of London (in progress)</li><li>Bachelor of Tourism &amp; Hospitality Management, NMDC, University of Yangon</li><li>Online Dutch (A1), University of Groningen</li></ul></div>
+      <div class="side-block"><span class="label">Languages</span>
+        <ul><li>Burmese, native</li><li>English, professional working fluency</li><li>Dutch, beginner</li></ul></div>
+      <div class="side-block"><span class="label">Volunteering</span>
+        <ul><li>Local Committee Vice President, AIESEC in Myanmar (2016–2018); mentored 25 members</li></ul></div>
+    </aside>
+  </div>
+</section>
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <span class="label" style="color:#ffd6d6">Contact</span>
+    <h2>Let’s talk about your next growth market</h2>
+    <div class="contact-rows">
+      <div class="crow"><span>eimyatmyatthwe@gmail.com</span><button class="copy" type="button" data-copy="eimyatmyatthwe@gmail.com">Copy</button></div>
+      <div class="crow"><span>+62 85121957816</span><button class="copy" type="button" data-copy="+62 85121957816">Copy</button></div>
+      <div class="crow"><span><a href="https://www.linkedin.com/in/ei-myat-myat-thwe-emmy/" target="_blank" rel="noopener">LinkedIn profile</a></span><span>Jakarta, UTC+7</span></div>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap">Campaign images © Flymya and the respective brands, shown as examples of my work.</div></footer>
+
+<script>
+const cmp=document.getElementById('compare'), rng=document.getElementById('compare-range');
+rng.addEventListener('input',()=>cmp.style.setProperty('--pos',rng.value+'%'));
+document.querySelectorAll('.copy').forEach(b=>{
+  b.addEventListener('click',()=>{
+    const t=b.dataset.copy;
+    const done=()=>{b.textContent='Copied';setTimeout(()=>b.textContent='Copy',1600)};
+    try{navigator.clipboard.writeText(t).then(done).catch(()=>sel(b))}catch(e){sel(b)}
+  });
+});
+function sel(b){const s=b.previousElementSibling;const r=document.createRange();r.selectNodeContents(s);const w=getSelection();w.removeAllRanges();w.addRange(r);b.textContent='Selected'}
+</script>
